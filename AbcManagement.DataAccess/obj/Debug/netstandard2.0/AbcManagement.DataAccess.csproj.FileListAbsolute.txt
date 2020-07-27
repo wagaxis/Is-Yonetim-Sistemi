@@ -1,0 +1,12 @@
+D:\Projeler\AbcManagement\AbcManagement.DataAccess\bin\Debug\netstandard2.0\AbcManagement.DataAccess.deps.json
+D:\Projeler\AbcManagement\AbcManagement.DataAccess\bin\Debug\netstandard2.0\AbcManagement.DataAccess.dll
+D:\Projeler\AbcManagement\AbcManagement.DataAccess\bin\Debug\netstandard2.0\AbcManagement.DataAccess.pdb
+D:\Projeler\AbcManagement\AbcManagement.DataAccess\bin\Debug\netstandard2.0\AbcManagement.Entities.dll
+D:\Projeler\AbcManagement\AbcManagement.DataAccess\bin\Debug\netstandard2.0\AbcManagement.Entities.pdb
+D:\Projeler\AbcManagement\AbcManagement.DataAccess\obj\Debug\netstandard2.0\AbcManagement.DataAccess.csprojAssemblyReference.cache
+D:\Projeler\AbcManagement\AbcManagement.DataAccess\obj\Debug\netstandard2.0\AbcManagement.DataAccess.AssemblyInfoInputs.cache
+D:\Projeler\AbcManagement\AbcManagement.DataAccess\obj\Debug\netstandard2.0\AbcManagement.DataAccess.AssemblyInfo.cs
+D:\Projeler\AbcManagement\AbcManagement.DataAccess\obj\Debug\netstandard2.0\AbcManagement.DataAccess.csproj.CopyComplete
+D:\Projeler\AbcManagement\AbcManagement.DataAccess\obj\Debug\netstandard2.0\AbcManagement.DataAccess.dll
+D:\Projeler\AbcManagement\AbcManagement.DataAccess\obj\Debug\netstandard2.0\AbcManagement.DataAccess.pdb
+D:\Projeler\AbcManagement\AbcManagement.DataAccess\obj\Debug\netstandard2.0\AbcManagement.DataAccess.csproj.CoreCompileInputs.cache

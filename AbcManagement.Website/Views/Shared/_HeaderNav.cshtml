@@ -1,0 +1,48 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@using Microsoft.AspNetCore.Authorization
+@inject IAuthorizationService AuthorizationService
+<nav class="navbar header-navbar pcoded-header">
+    <div class="navbar-wrapper">
+
+        <div class="navbar-logo">
+            <a class="mobile-menu" id="mobile-collapse" href="#!">
+                <i class="ti-menu"></i>
+            </a>
+            <a class="mobile-search morphsearch-search" href="#">
+                <i class="ti-search"></i>
+            </a>
+            <a href="index.html">
+                <h5>İş Yönetim Sistemi</h5>
+            </a>
+            <a class="mobile-options">
+                <i class="ti-more"></i>
+            </a>
+        </div>
+
+        <div class="navbar-container container-fluid">
+            <ul class="nav-right">
+                <li class="user-profile header-notification">
+                    <a href="#!">
+                        <img src="~/images/avatar-4.jpg" class="img-radius" alt="User-Profile-Image">
+                        <span>@Context.User.Identity.Name</span>
+                        <i class="ti-angle-down"></i>
+                    </a>
+                    <ul class="show-notification profile-notification">
+                        <li>
+                            <a href="user-profile.html">
+                                <i class="ti-user"></i> Profile
+                            </a>
+                        </li>
+                        <li>
+                            <a asp-controller="Login" asp-action="Logout">
+                                <i class="ti-layout-sidebar-left"></i> Logout
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

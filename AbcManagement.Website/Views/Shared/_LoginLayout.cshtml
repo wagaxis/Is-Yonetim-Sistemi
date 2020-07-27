@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="#">
+    <meta name="keywords" content="Admin , Responsive, Landing, Bootstrap, App, Template, Mobile, iOS, Android, apple, creative app">
+    <meta name="author" content="#">
+    <!-- Required Fremwork -->
+    <link rel="stylesheet" type="text/css" href="~/css/bootstrap.min.css">
+    <!-- themify-icons line icon -->
+    <link rel="stylesheet" type="text/css" href="~/icons/themify-icons/themify-icons.css">
+    <!-- ico font -->
+    <link rel="stylesheet" type="text/css" href="~/icons/icofont/css/icofont.css">
+    <!-- Style.css -->
+    <link rel="stylesheet" type="text/css" href="~/css/style.css">
+    <!-- SweetAlert2 -->
+    <link rel="stylesheet" href="~/css/sweetalert2.min.css">
+    <!-- Sayfaya özel css ler -->
+    @RenderSection("css", required: false)
+</head>
+<body class="fix-menu">
+    <section class="login p-fixed d-flex text-center bg-primary common-img-bg">
+        @RenderBody()
+    </section>
+
+    <!--- SweetAlert2 -->
+    <script src="~/js/sweetalert2.all.min.js"></script>
+    <!-- Sayfaya özel js ler -->
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

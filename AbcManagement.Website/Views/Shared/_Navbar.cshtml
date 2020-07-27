@@ -1,0 +1,53 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@using Microsoft.AspNetCore.Authorization
+@inject IAuthorizationService AuthorizationService
+<nav class="pcoded-navbar">
+    <div class="sidebar_toggle"><a href="#"><i class="icon-close icons"></i></a></div>
+    <div class="pcoded-inner-navbar main-menu">
+        <div class="">
+            <div class="main-menu-header">
+                <img class="img-40 img-radius" src="~/images/avatar-4.jpg" alt="User-Profile-Image">
+                <div class="user-details">                    
+                    <span>@Context.User.Identity.Name</span>
+                    <span id="more-details">UX Designer<i class="ti-angle-down"></i></span>
+                </div>
+            </div>
+
+            <div class="main-menu-content">
+                <ul>
+                    <li class="more-details">
+                        <a href="user-profile.html"><i class="ti-user"></i>View Profile</a>
+                        <a href="#!"><i class="ti-settings"></i>Settings</a>
+                        <a asp-controller="Login" asp-action="Logout"><i class="ti-layout-sidebar-left"></i>Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="pcoded-navigatio-lavel" data-i18n="nav.category.navigation">Navigation</div>
+        <ul class="pcoded-item pcoded-left-item">
+            <li class="">
+                <a asp-controller="Home" asp-action="Index">
+                    <span class="pcoded-micon"><i class="ti-home"></i></span>
+                    <span class="pcoded-mtext" data-i18n="nav.dash.main">Dashboard</span>
+                    <span class="pcoded-mcaret"></span>
+                </a>
+            </li>
+            <li class="">
+                <a asp-controller="Home" asp-action="Project">
+                    <span class="pcoded-micon"><i class="ti-folder"></i></span>
+                    <span class="pcoded-mtext" data-i18n="nav.dash.main">Project</span>
+                    <span class="pcoded-mcaret"></span>
+                </a>
+            </li>
+            <li class="">
+                <a asp-controller="Home" asp-action="Users">
+                    <span class="pcoded-micon"><i class="ti-user"></i></span>
+                    <span class="pcoded-mtext" data-i18n="nav.dash.main">Users</span>
+                    <span class="pcoded-mcaret"></span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>

@@ -1,0 +1,14 @@
+D:\Projeler\AbcManagement\AbcManagement.Business\bin\Debug\netstandard2.0\AbcManagement.Business.deps.json
+D:\Projeler\AbcManagement\AbcManagement.Business\bin\Debug\netstandard2.0\AbcManagement.Business.dll
+D:\Projeler\AbcManagement\AbcManagement.Business\bin\Debug\netstandard2.0\AbcManagement.Business.pdb
+D:\Projeler\AbcManagement\AbcManagement.Business\bin\Debug\netstandard2.0\AbcManagement.DataAccess.dll
+D:\Projeler\AbcManagement\AbcManagement.Business\bin\Debug\netstandard2.0\AbcManagement.Entities.dll
+D:\Projeler\AbcManagement\AbcManagement.Business\bin\Debug\netstandard2.0\AbcManagement.DataAccess.pdb
+D:\Projeler\AbcManagement\AbcManagement.Business\bin\Debug\netstandard2.0\AbcManagement.Entities.pdb
+D:\Projeler\AbcManagement\AbcManagement.Business\obj\Debug\netstandard2.0\AbcManagement.Business.csprojAssemblyReference.cache
+D:\Projeler\AbcManagement\AbcManagement.Business\obj\Debug\netstandard2.0\AbcManagement.Business.AssemblyInfoInputs.cache
+D:\Projeler\AbcManagement\AbcManagement.Business\obj\Debug\netstandard2.0\AbcManagement.Business.AssemblyInfo.cs
+D:\Projeler\AbcManagement\AbcManagement.Business\obj\Debug\netstandard2.0\AbcManagement.Business.csproj.CopyComplete
+D:\Projeler\AbcManagement\AbcManagement.Business\obj\Debug\netstandard2.0\AbcManagement.Business.dll
+D:\Projeler\AbcManagement\AbcManagement.Business\obj\Debug\netstandard2.0\AbcManagement.Business.pdb
+D:\Projeler\AbcManagement\AbcManagement.Business\obj\Debug\netstandard2.0\AbcManagement.Business.csproj.CoreCompileInputs.cache

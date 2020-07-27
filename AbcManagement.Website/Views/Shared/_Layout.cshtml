@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - AbcManagement.Website</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <!-- Custom -->
+    <link rel="stylesheet" href="~/css/custum.css" />
+    <link rel="stylesheet" href="~/css/flex.css" />
+    <!-- themify-icons line icon -->
+    <link rel="stylesheet" type="text/css" href="~/icons/themify-icons/themify-icons.css" />
+    <!-- ico font -->
+    <link rel="stylesheet" href="~/icons/icofont/css/icofont.css" />
+    <!-- Style.css -->
+    <link rel="stylesheet" type="text/css" href="~/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/jquery.mCustomScrollbar.css" />
+
+    <!-- LAST ADD -->
+    <!-- SweetAlert2 -->
+    <link rel="stylesheet" href="~/css/sweetalert2.min.css" />
+    <!-- Dev Extreme Css -->
+    <link rel="stylesheet" href="~/lib/DevExtreme/dx.common.css" />
+    <link rel="stylesheet" href="~/lib/DevExtreme/dx.light.css" />
+    <!-- Sayfaya özel css ler -->
+    @RenderSection("css", required: false)
+</head>
+<body>
+    <div id="pcoded" class="pcoded">
+        <div class="pcoded-overlay-box"></div>
+        <div class="pcoded-container navbar-wrapper">
+
+            <!-- Header -->
+            <partial name="_HeaderNav" />
+
+            <div class="pcoded-main-container">
+                <div class="pcoded-wrapper">
+                    <!-- Navbar menü -->
+                    <partial name="_Navbar" />
+
+                    <div class="pcoded-content">
+                        <div class="pcoded-inner-content">
+                            <!-- Main -->
+                            <div class="main-body">
+                                @RenderBody()
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <partial name="_Footer" />
+    <script src="~/js/jquery-3.5.1.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- fontawesome -->
+    <script src="~/icons/fontawesome/fontawesome.js"></script>
+    <!-- Template -->
+    <script src="~/js/pcoded.min.js"></script>
+    <script src="~/js/demo-12.js"></script>
+    <script src="~/js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script type="text/javascript" src="~/js/script.min.js"></script>
+    <!-- DevExtreme library -->
+    <script src="~/lib/DevExtreme/dx.all.js"></script>
+    <script src="~/lib/DevExtreme/dx.messages.tr.js"></script>
+    <!--- SweetAlert2 -->
+    <script src="~/js/sweetalert2.all.min.js"></script>
+    <!-- Sayfaya özel js ler -->
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

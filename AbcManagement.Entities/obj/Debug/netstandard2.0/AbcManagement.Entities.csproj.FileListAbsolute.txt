@@ -1,0 +1,9 @@
+D:\Projeler\AbcManagement\AbcManagement.Entities\bin\Debug\netstandard2.0\AbcManagement.Entities.deps.json
+D:\Projeler\AbcManagement\AbcManagement.Entities\bin\Debug\netstandard2.0\AbcManagement.Entities.dll
+D:\Projeler\AbcManagement\AbcManagement.Entities\bin\Debug\netstandard2.0\AbcManagement.Entities.pdb
+D:\Projeler\AbcManagement\AbcManagement.Entities\obj\Debug\netstandard2.0\AbcManagement.Entities.AssemblyInfoInputs.cache
+D:\Projeler\AbcManagement\AbcManagement.Entities\obj\Debug\netstandard2.0\AbcManagement.Entities.AssemblyInfo.cs
+D:\Projeler\AbcManagement\AbcManagement.Entities\obj\Debug\netstandard2.0\AbcManagement.Entities.csproj.CoreCompileInputs.cache
+D:\Projeler\AbcManagement\AbcManagement.Entities\obj\Debug\netstandard2.0\AbcManagement.Entities.dll
+D:\Projeler\AbcManagement\AbcManagement.Entities\obj\Debug\netstandard2.0\AbcManagement.Entities.pdb
+D:\Projeler\AbcManagement\AbcManagement.Entities\obj\Debug\netstandard2.0\AbcManagement.Entities.csprojAssemblyReference.cache
