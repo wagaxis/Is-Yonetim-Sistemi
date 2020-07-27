@@ -4,5 +4,299 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Users</h1>
+@using Microsoft.AspNetCore.Authorization
+@using System.Security.Claims;
+@inject IAuthorizationService AuthorizationService
+
+<div class="card">
+    <div class="card-header">
+        <h5>Users</h5>
+        <div class="card-header-right">
+            <ul class="list-unstyled card-option text-right" style="width: 250px;">
+                <li id="refresh" data-placement="left" data-toggle="tooltip" title="Yenile"><i class="fas fa-sync-alt"></i></li>
+                <li id="addUser" data-placement="left" data-toggle="tooltip" title="Ekle"><i class="fas fa-plus"></i></li>
+            </ul>
+        </div>
+    </div>
+    <div class="card-block" style="height:calc(100% - 76px) !important;">
+        <div id="grid" class="full-height">
+            <!--- Datagrid -->
+            <div id="gridContainer"></div>
+            <div id="popup">
+                <div data-options="dxTemplate: { name: 'template1' }" style="overflow-y:scroll">
+                    <form asp-controller="Home" asp-action="Save_User" method="post">
+                        <div class="row">
+                            <div class="dx-fieldset full-width d-flex flex-column">
+                                <div class="dx-field d-flex flex-row"></div>
+                                <div class="dx-field-label flex-2">Kullanıcı Adı</div>
+                                <div class="dx-field-value flex-10">
+                                    <input type="text" name="UserName" class="form-control">
+                                </div>
+                            </div>
+                            <div class="dx-fieldset full-width d-flex flex-column">
+                                <div class="dx-field d-flex flex-row"></div>
+                                <div class="dx-field-label flex-2">Ad</div>
+                                <div class="dx-field-value flex-10">
+                                    <textarea name="FirstName" class="form-control"></textarea>
+                                </div>
+                            </div>
+                            <div class="dx-fieldset full-width d-flex flex-column">
+                                <div class="dx-field d-flex flex-row"></div>
+                                <div class="dx-field-label flex-2">Soyad</div>
+                                <div class="dx-field-value flex-10">
+                                    <input name="LastName" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="dx-fieldset full-width d-flex flex-column">
+                                <div class="dx-field d-flex flex-row"></div>
+                                <div class="dx-field-label flex-2">Email</div>
+                                <div class="dx-field-value flex-10">
+                                    <input type="email" name="Email" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="dx-fieldset full-width d-flex flex-column">
+                                <div class="dx-field d-flex flex-row"></div>
+                                <div class="dx-field-label flex-2">Şifre</div>
+                                <div class="dx-field-value flex-10">
+                                    <input type="password" name="Password" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="dx-fieldset full-width d-flex flex-column">
+                                <div class="dx-field d-flex flex-row"></div>
+                                <div class="dx-field-label flex-2">Hakkında</div>
+                                <div class="dx-field-value flex-10">
+                                    <textarea name="UserAbout" class="form-control"></textarea>
+                                </div>
+                            </div>
+                            <div class="dx-fieldset full-width d-flex flex-column" hidden>
+                                <div class="dx-field d-flex flex-row"hidden></div>
+                                <div class="border-checkbox-group border-checkbox-group-primary"hidden>
+                                    <input class="border-checkbox" type="checkbox" value="true" name="IsActive" id="checkbox1"hidden>                                    
+                                </div>
+                            </div>
+                            <div class="dx-fieldset full-width d-flex flex-column">
+                                <div class="dx-field d-flex flex-row"></div>
+                                <div class="dx-field-label flex-2">Kategori</div>
+                                <div class="dx-field-value flex-10">
+                                    <select name="IsAdmin" class="form-control form-control-default">
+                                        <option selected>Rol Seçiniz</option>
+                                        <option value="0">Admin</option>
+                                        <option value="1">User</option>
+                                    </select>
+                                </div>
+                            </div>                           
+                        </div>
+                        <div class="col-md-6" style="max-inline-size: none;">
+                            <button type="submit" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20">Kaydet</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script>
+        $(function () {
+            if (@ViewBag.process == 1) {
+                Swal.fire({
+                    html: '<span class="f-w-600">İşlem Başarılı</span>',
+                    type: 'success',
+                    width: 350,
+                    showConfirmButton: false,
+                    allowOutsideClick: false,
+                    timer: 1500
+                });
+            } else if (@ViewBag.process == 2) {
+                Swal.fire({
+                    position: 'center',
+                    type: 'error',
+                    title: 'Hata',
+                    html: '<span class="f-16">Ekleme işlemi sırasında hata oluştu.</span>',
+                    showConfirmButton: true,
+                    confirmButtonText: 'Tamam',
+                    customClass: {
+                        confirmButton: 'f-14 bg-inverse'
+                    }
+                });
+            }
+        });
+
+        list();
+        var userList, popup = null;
+
+        var roles = [{
+            "value": 0,
+            "text": "Admin"
+        }, {
+            "value": 1,
+            "text": "User"
+        }];
+
+        function list () {
+            userList = $(function () {
+                $.post("@Url.Action("List_User", "Home")")
+                    .done(function (list) {
+                        $("#gridContainer").dxDataGrid({
+                            dataSource: list,
+                            keyExpr: "userId",
+                            showBorders: true,
+                            editing: {
+                                useIcons: true,
+                                allowDeleting: true,
+                                texts: {
+                                    confirmDeleteMessage: ""
+                                },
+                                allowUpdating: true,
+                            },
+                            paging: {
+                                pageSize: 10
+                            },
+                            pager: {
+                                allowedPageSizes: [5, 8, 15, 30],
+                                showInfo: true,
+                                showNavigationButtons: true,
+                                showPageSizeSelector: true,
+                                visible: true
+                            },
+                            columns: [{
+                                dataField: "userName",
+                                caption: "Kullanıcı Adı"
+                            }, {
+                                dataField: "firstName",
+                                caption: "Ad"
+                            },
+                            {
+                                dataField: "lastName",
+                                caption: "Soyad"
+                            },
+                            {
+                                dataField: "email",
+                                caption: "E-Posta"
+                            },
+                            {
+                                dataField: "userAbout",
+                                caption: "Hakkında"
+                            },
+                            {
+                                dataField: "isAdmin",
+                                caption: "Rol",
+                                lookup: {
+                                    dataSource: roles,
+                                    displayExpr: "text",
+                                    valueExpr: "value"
+                                }
+                            }, {
+                                type: "buttons",
+                                width: 110,
+                                buttons: ["edit" ,"delete"]
+                            }],
+                            onRowRemoving: function (e) {
+                                e.cancel = Swal.fire({
+                                    title: 'İşlem Onayı',
+                                    html: '<span class="f-16">Silmek istediğinizden emin misiniz?</span>',
+                                    type: 'question',
+                                    allowOutsideClick: false,
+                                    showCancelButton: true,
+                                    confirmButtonText: 'Evet',
+                                    cancelButtonText: 'Hayır',
+                                    customClass: {
+                                        confirmButton: 'f-14 bg-inverse',
+                                        cancelButton: 'f-14 bg-default text-inverse'
+                                    }
+                                }).then((result) => {
+                                    if (result.value) {
+                                        return false;
+                                    }
+                                    else {
+                                        return true;
+                                    }
+                                });
+                            },
+                            onRowRemoved: function (e) {
+                                $.post("@Url.Action("Delete_User", "Home")", e.data)
+                                    .done(function (del) {
+                                        if (del == true) {
+                                            Swal.fire({
+                                                html: '<span class="f-w-600">İşlem Başarılı</span>',
+                                                type: 'success',
+                                                width: 350,
+                                                showConfirmButton: false,
+                                                allowOutsideClick: false,
+                                                timer: 1500
+                                            });
+                                        } else {
+                                            Swal.fire({
+                                                position: 'center',
+                                                type: 'error',
+                                                title: 'Hata',
+                                                html: '<span class="f-16">Silme işlemi sırasında hata oluştu.</span>',
+                                                showConfirmButton: true,
+                                                confirmButtonText: 'Tamam',
+                                                customClass: {
+                                                    confirmButton: 'f-14 bg-inverse'
+                                                }
+                                            });
+                                        }
+                                    });
+
+                            },
+                            onRowUpdated: function (f) {
+                                $.post("@Url.Action("Update_User", "Home")", { user: f.data })
+                                    .done(function (upd) {
+                                        if (upd == true) {
+                                            Swal.fire({
+                                                html: '<span class="f-w-600">İşlem Başarılı</span>',
+                                                type: 'success',
+                                                width: 350,
+                                                showConfirmButton: false,
+                                                allowOutsideClick: false,
+                                                timer: 1500
+                                            });
+                                        }
+                                        else {
+                                            Swal.fire({
+                                                position: 'center',
+                                                type: 'error',
+                                                title: 'Hata',
+                                                html: '<span class="f-16">Güncelleme işlemi sırasında hata oluştu.</span>',
+                                                showConfirmButton: true,
+                                                confirmButtonText: 'Tamam',
+                                                customClass: {
+                                                    confirmButton: 'f-14 bg-inverse'
+                                                }
+                                            });
+                                        }
+                                    });
+                            }
+                        });
+                    });
+            });
+        }
+        $(document).ready(function () {
+            $("#refresh").click(function () {
+                list();
+            });
+            $("#addUser").click(function () {
+                popup.show();
+            });
+        });
+
+        $(function () {
+            popup = $("#popup").dxPopup({
+                width: '50%',
+                height: '80%',
+                showTitle: true,
+                title: "Kullanıcı Ekle",
+                visible: false,
+                dragEnabled: false,
+                closeOnOutsideClick: true,
+                contentTemplate: "template1"
+            }).dxPopup("instance");
+            popup.visible = false;
+        });
+    </script>
+}
 

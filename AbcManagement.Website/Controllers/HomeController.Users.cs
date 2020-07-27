@@ -10,27 +10,45 @@ namespace AbcManagement.Website.Controllers
 {
     public partial class HomeController : Controller
     {
+        // 0 = default
+        // 1 = işlem başarılı
+        // 2 = işlem başarısız
+
         [Route("users", Name = "users")]
-        public IActionResult Users()
+        public IActionResult Users(int process = 0)
         {
             const string methodCode = "009";
+            if (process == 1)
+            {
+                ViewBag.process = 1;
+            }
+            else if (process == 2)
+            {
+                ViewBag.process = 2;
+
+            }
+            else
+            {
+                ViewBag.process = 0;
+            }
             return View();
         }
 
-        public bool Save_User(User user)
+        public IActionResult Save_User(User user)
         {
             const string methodCode = "010";
+
             using (var uop = new UserProcess(_context))
             {
                 var saveUser = uop.Save(user);
                 // Ekleme başarılı mı kontrolü yapılır.
                 if (saveUser == true)
                 {
-                    return saveUser;
+                    return RedirectToAction("Users", new { process = 1 });
                 }
                 else
                 {
-                    return saveUser;
+                    return RedirectToAction("Users", new { process = 2 });
                 }
             }
         }

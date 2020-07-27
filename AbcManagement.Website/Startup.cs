@@ -64,7 +64,7 @@ namespace AbcManagement.Website
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Project}/{id?}");
+                    pattern: "{controller=Home}/{action=Login}/{id?}");
                 endpoints.MapControllerRoute(
                     name: "login",
                     pattern: "{controller=Login}/{action=Login}/{id?}");

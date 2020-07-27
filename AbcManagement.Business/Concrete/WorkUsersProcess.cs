@@ -1,15 +1,15 @@
-﻿using AbcManagement.DataAccess.ORMs.EF;
+﻿using AbcManagement.Business.Abstract;
+using AbcManagement.DataAccess.ORMs.EF;
 using AbcManagement.Entities.Concreate;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
 
 namespace AbcManagement.Business.Concrete
 {
-    public class WorkUsersProcess : IDisposable
+    public class WorkUsersProcess : IWorkUsersProcess, IDisposable
     {
         private readonly DatabaseContext _context;
 

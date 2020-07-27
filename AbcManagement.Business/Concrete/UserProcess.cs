@@ -1,4 +1,5 @@
-﻿using AbcManagement.Business.Util;
+﻿using AbcManagement.Business.Abstract;
+using AbcManagement.Business.Util;
 using AbcManagement.DataAccess.Abstract;
 using AbcManagement.DataAccess.ORMs.EF;
 using AbcManagement.Entities.Concreate;
@@ -10,7 +11,7 @@ using System.Linq.Expressions;
 
 namespace AbcManagement.Business.Concrete
 {
-    public class UserProcess : IDisposable
+    public class UserProcess : IUserProcess, IDisposable
     {
         private readonly DatabaseContext _context;
         private readonly IDA_Users _daUsers;
@@ -19,7 +20,7 @@ namespace AbcManagement.Business.Concrete
         {
             context.Database.EnsureCreated();
             _context = context;
-            //_daUsers = InjectionManager.GetInstance<IDA_Users>();
+            _daUsers = InjectionManager.GetInstance<IDA_Users>();
 
         }
 
